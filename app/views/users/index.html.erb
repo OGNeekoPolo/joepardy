@@ -1,18 +1,11 @@
-<% provide(:title, 'Users Index') %>
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
 
-<div class="center jumbotron">
-      <h1><strong>Joepardy Quizmasters</strong></h1>
-        <p>We slingin' knowledge, son.</p>
-        <%= link_to "Sign up now!", 'signup', class: "btn btn-lg btn-primary" %>
-</div>
-    <hr />
-    <% @users.each do |user| %>
-    <h2>
-      <%= gravatar_for @user %>
-      <%= @user.username %>
-    </h2>
-    <p><%= @user.quiz.score %></p>
-    <% if user != @users.last %>
-      <hr/>
-      <% end %>
-    <% end %>
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user %>
+      <%= link_to user.username %>
+    </li>
+  <% end %>
+</ul>

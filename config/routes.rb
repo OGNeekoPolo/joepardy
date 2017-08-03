@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-  get 'sessions/new'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
   delete '/logout',  to: 'sessions#destroy'
+
+  root 'sessions#new'
 
   resources :users
 
-=======
+
   resources :quizzes do
     resources :questions do
       resources :answers
     end
   end
->>>>>>> 9cf644edcdfe07aeb4714da9b7bafc2fa2f3b83d
 end

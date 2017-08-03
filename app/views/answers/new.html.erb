@@ -1,2 +1,18 @@
-<h1>Answers#new</h1>
-<p>Find me in app/views/answers/new.html.erb</p>
+<% provide(:title, 'New Answer for Question') %>
+<h1>Add Answers</h1>
+<p>
+  Add answers to your quiz question below. Each question has four options for the user to select, one of which is the correct answer.
+</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p><%= @quiz.question.body %></p>
+    <%= simple_form_for(@answer) do |f| %>
+    <%= f.input :first_option %>
+    <%= f.input :second_option %>
+    <%= f.input :third_option %>
+    <%= f.input :correct_answer %>
+    <%= f.submit 'Create answer', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
