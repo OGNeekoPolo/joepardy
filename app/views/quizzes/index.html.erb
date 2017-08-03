@@ -1,0 +1,13 @@
+<h1>Joepardy</h1>
+<hr/>
+<fieldset>
+  <legend>Quiz Collection</legend>
+  <% @quizzes.each do |quiz| %>
+    <strong>
+      <%= quiz.name %>
+    </strong>
+    <strong>
+      <%= "Theme: #{quiz.theme}" %>
+    </strong>
+  <% end %>
+</fieldset>
