@@ -19,7 +19,7 @@ class AnswersController < ApplicationController
     @answer = Answer.create(answer_params)
 
     if @answer.save
-      redirect_to @quiz.question
+      redirect_to @quiz.question 
     else
       render 'new'
     end
