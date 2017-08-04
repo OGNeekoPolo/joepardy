@@ -36,14 +36,14 @@
 
 
 
-
-
 Rails.application.routes.draw do
   get 'sessions/new'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
   delete '/logout',  to: 'sessions#destroy'
+
   resources :users
 
   resources :quizzes do
@@ -51,5 +51,7 @@ Rails.application.routes.draw do
       resources :answers
     end
   end
+
   root 'quizzes#index'
+
 end
