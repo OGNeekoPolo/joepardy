@@ -11,11 +11,41 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20170803155208) do
+ActiveRecord::Schema.define(version: 20170803210030) do
+
 
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "first_option"
+    t.string "second_option"
+    t.string "third_option"
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "question_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "quiz_id"
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "name"
+    t.string "theme"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.boolean "published", default: false
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -28,34 +58,7 @@ ActiveRecord::Schema.define(version: 20170803155208) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.string "first_option"
-    t.string "second_option"
-    t.string "third_option"
-    t.string "correct_answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "answer_id"
-    t.index ["answer_id"], name: "index_questions_on_answer_id"
-  end
-
-  create_table "quizzes", force: :cascade do |t|
-    t.string "name"
-    t.string "theme"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "question_id"
-    t.boolean "published"
-    t.index ["question_id"], name: "index_quizzes_on_question_id"
-  end
-
-  add_foreign_key "questions", "answers"
-  add_foreign_key "quizzes", "questions"
-
+  add_foreign_key "answers", "questions"
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "users"
 end
