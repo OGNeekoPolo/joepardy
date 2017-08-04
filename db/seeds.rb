@@ -5,20 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Quiz.create(
-  id: 1,
-  name: "The Quiz About Stuff",
-  theme: "Misc."
-)
-
-Quiz.create(
-  id: 2,
-  name: "Football Quiz",
-  theme: "Sports"
-)
-
-Quiz.create(
-  id: 3,
-  name: "Are You A Movie Buff?"
-  theme: "Movies"
-)
+# Quiz.create(
+#   id: 1,
+#   name: "The Quiz About Stuff",
+#   theme: "Misc."
+# )
+#
+# Quiz.create(
+#   id: 2,
+#   name: "Football Quiz",
+#   theme: "Sports"
+# )
+#
+# Quiz.create(
+#   id: 3,
+#   name: "Are You A Movie Buff?"
+#   theme: "Movies"
+# )
