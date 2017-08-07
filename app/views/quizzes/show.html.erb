@@ -1,0 +1,32 @@
+<header class="jumbotron">
+  <h1>Joepardy!</h1>
+</header>
+<%= link_to 'Quizzes Home', quizzes_path, data: {confirm: 'Returning home will erase you progress on this quiz. Are you sure?'} %>
+<fieldset>
+  <legend>
+    <%= @quiz.name %>
+  </legend>
+  <% @questions.each do |question| %>
+    <div>
+      <strong>
+        <%= question.body %>
+      </strong>
+      <br>
+      <strong>
+        <%= @answer.first_option %>
+      </strong>
+      <br>
+      <strong>
+        <%= @answer.correct_answer %>
+      </strong>
+      <br>
+      <strong>
+        <%= @answer.third_option %>
+      </strong>
+      <br>
+      <strong>
+        <%= @answer.second_option %>
+      </strong>
+    </div>
+  <% end %>
+</fieldset>
