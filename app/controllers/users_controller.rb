@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "You're in the game!"
-      redirect to @user
+      redirect_to @user
     else
       render 'new'
     end
