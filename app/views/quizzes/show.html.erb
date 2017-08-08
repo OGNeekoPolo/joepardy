@@ -11,22 +11,7 @@
       <strong>
         <%= question.body %>
       </strong>
-      <br>
-      <strong>
-        <%= @answer.first_option %>
-      </strong>
-      <br>
-      <strong>
-        <%= @answer.correct_answer %>
-      </strong>
-      <br>
-      <strong>
-        <%= @answer.third_option %>
-      </strong>
-      <br>
-      <strong>
-        <%= @answer.second_option %>
-      </strong>
     </div>
+    <%= render :partial => 'answers/guess' %>
   <% end %>
 </fieldset>

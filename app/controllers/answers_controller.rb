@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   def new
     @answer = Answer.new
+    @question = Question.find(params[:question_id])
   end
 
   def show
@@ -8,18 +9,20 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    if != admin?
+    if !admin?
       flash[:danger] = "Sorry, you're not an admin."
       redirect_to @user
     else
       @answer = Answer.find(params[:answer_id])
+    end
   end
 
   def create
-    @answer = Answer.create(answer_params)
-
+    @answer = Answer.new(answer_params)
+    @answer.question_id = params[:question_id]
+    @quiz = Quiz.find(params[:quiz_id])
     if @answer.save
-      redirect_to @quiz.question
+      redirect_to @quiz
     else
       render 'new'
     end
@@ -28,6 +31,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:first_option, :second_option, :third_option, :correct_answer)
+    params.require(:answer).permit(:option, :correct_answer)
   end
 end

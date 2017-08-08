@@ -1,11 +1,11 @@
-# app/views/questions/_form.html.erb
-<%= form_for @question do |f| %>
-  
+
+<%= form_for quiz_questions_path do |f| %>
+
   <div class="form-field">
     <%= f.label :body, "Question" %>
     <%= f.text_area :body, class: "form-control" %>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit "Next Step" %>
 
 <% end %>

@@ -44,7 +44,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   delete '/logout',  to: 'sessions#destroy'
 
+  post '/quizzes/:id', to: 'guess#create', as: :guess
   resources :users
+
 
   resources :quizzes do
     resources :questions do
@@ -52,6 +54,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'quizzes#index'
+  root 'sessions#new'
 
 end
