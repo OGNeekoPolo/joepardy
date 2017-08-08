@@ -13,7 +13,7 @@
       <br/>
       <%= "Theme: #{quiz.theme}" %>
       <br/>
-      <%= link_to 'Take Quiz', quiz_path(quiz) %>
+      <%= link_to 'Take Quiz', quiz_path(quiz), data: {confirm: "Start #{quiz.name}?"} %>
     </div>
   <% end %>
 </fieldset>

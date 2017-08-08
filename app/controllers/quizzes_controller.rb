@@ -9,9 +9,9 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
-
+    @quiz.user_id = session[:user_id]
     if @quiz.save
-      redirect_to new_quiz_question_path
+      redirect_to new_quiz_question_path(@quiz)
     else
       render :new
     end
@@ -20,7 +20,7 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @questions = @quiz.questions
-    @answers = @questions.answers
+    @answers = @quiz.answers.shuffle
   end
 
   def edit
